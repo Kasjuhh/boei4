@@ -13,5 +13,9 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue'],
   },
 
+  plugins: [
+    { src: '~/plugins/keycloak.client.ts', mode: 'client' },
+  ],
+
   modules: ["@nuxtjs/tailwindcss"]
 })
