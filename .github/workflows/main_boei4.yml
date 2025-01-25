@@ -64,5 +64,5 @@ jobs:
         with:
           app-name: 'boei4'
           slot-name: 'Production'
-          package: ./output/public
+          package: .
           
