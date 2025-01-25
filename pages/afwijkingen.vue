@@ -6,28 +6,28 @@
             <div class="w-full">
               <ul class="bg-white rounded-lg shadow overflow-y-auto max-h-96">
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 1
+                  Afwijking 1
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 2
+                  Afwijking 2
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 3
+                  Afwijking 3
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 4
+                  Afwijking 4
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 5
+                  Afwijking 5
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 6
+                  Afwijking 6
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 7
+                  Afwijking 7
                 </li>
                 <li class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer">
-                  Notificatie 8
+                  Afwijking 8
                 </li>
               </ul>
             </div>
