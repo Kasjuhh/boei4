@@ -66,3 +66,8 @@ jobs:
           slot-name: 'Production'
           package: .
           
+      - name: Unzip deployed artifact
+        run: |
+          cd /home/site/wwwroot
+          unzip release.zip
+          rm release.zip
