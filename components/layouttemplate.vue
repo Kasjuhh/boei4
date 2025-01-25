@@ -2,14 +2,13 @@
   <div class="min-h-full">
     <div class="bg-black pb-32">
       <div id="star-container pb-32">
-        <div id="star-pattern"></div>
         <Disclosure as="nav" class="bg-black" v-slot="{ open }">
           <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="border-b border-neutral-600">
               <div class="flex h-16 items-center justify-between px-4 sm:px-0">
                 <div class="flex items-center">
                   <div class="flex-shrink-0">
-                    <img class="h-12 w-12" src="/img/AASA_logo.png" alt="AASA logo" />
+                    <img class="h-12 w-12" src="/img/buoy.png" alt="BUOY logo" />
                   </div>
                   <div class="hidden md:block z-50">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -68,10 +67,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const router = useRouter();
 const navigation = [
-  { name: 'Login', href: '#', current: true },
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Boeien', href: '#', current: true },
-  { name: 'About us', href: '#', current: false },
+  { name: 'Boeien', href: '/boeien', current: false },
+  { name: 'Afwijkingen', href: '/afwijkingen', current: false },
+  { name: 'Notificaties', href: '/notificaties', current: false },
+  { name: 'Sensoren', href: '/sensors', current: false },
 ]
 const routeTitleMap = {
     '/dashboard': 'Dashboard',
