@@ -26,7 +26,7 @@ jobs:
         run: npm run generate
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip .output/public
+        run: zip -r release.zip .output/public -j .output/public/*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -65,9 +65,3 @@ jobs:
           app-name: 'boei4'
           slot-name: 'Production'
           package: .
-          
-      - name: Unzip deployed artifact
-        run: |
-          cd /home/site/wwwroot
-          unzip release.zip
-          rm release.zip
