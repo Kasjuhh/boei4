@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-full">
-    <div class="bg-black pb-32">
+    <div class="bg-teal-950 pb-32">
       <div id="star-container pb-32">
-        <Disclosure as="nav" class="bg-black" v-slot="{ open }">
+        <Disclosure as="nav" class="bg-teal-950" v-slot="{ open }">
           <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="border-b border-neutral-600">
               <div class="flex h-16 items-center justify-between px-4 sm:px-0">

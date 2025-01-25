@@ -1,6 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
+# filepath: .github/workflows/main_boei4.yml
 name: Build and deploy Node.js app to Azure Web App - boei4
 
 on:
@@ -19,16 +17,16 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '18.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run generate
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .output/public
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -53,14 +51,13 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1AB84F3D3C2C44F795C58C04CDFD6954 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_787D964EB5444CEA94ACCA33D01F0802 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0184086D7678480E8E2F706484E5B4EB }}
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
