@@ -4,12 +4,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const keycloak = useKeycloak();
 
     const protectedRoutes = [
-        "/gebruikers",
+        "/afwijkingen",
     ];
 
     const userHasAccess = (route: string): boolean => {
         const routeRolesMap: Record<string, string[]> = {
-            "/gebruikers": ["Data-Engineer"],
+            "/afwijkingen": ["Data-Engineer"],
         };
 
         const requiredRoles = routeRolesMap[route];
