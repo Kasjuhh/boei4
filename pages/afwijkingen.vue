@@ -20,11 +20,13 @@
                 <!-- Debug Logs -->
       <div class="debug-logs mt-4 p-4 bg-gray-100 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Keycloak Debug Information</h2>
-        <p><strong>isAuthenticated:</strong> {{ keycloak?.isAuthenticated }}</p>
-        <p><strong>User ID:</strong> {{ keycloak?.userId }}</p>
-        <p><strong>Username:</strong> {{ keycloak?.username }}</p>
-        <p><strong>Token:</strong> {{ keycloak?.token }}</p>
-        <p><strong>Decoded Token:</strong> {{ decodedToken }}</p>
+        <p><strong>isAuthenticated:</strong> {{ isAuthenticated }}</p>
+        <p><strong>isPending:</strong> {{ isPending }}</p>
+        <p><strong>hasFailed:</strong> {{ hasFailed }}</p>
+        <p><strong>token:</strong> {{ token }}</p>
+        <p><strong>decodedToken:</strong> {{ decodedToken }}</p>
+        <p><strong>username:</strong> {{ username }}</p>
+        <p><strong>userId:</strong> {{ userId }}</p>
         </div>
         </div>
       </div>
@@ -35,7 +37,23 @@
 <script setup>
 import { useKeycloak } from '@josempgon/vue-keycloak'
 import { ref } from 'vue'
-import 
+const {
+  // Reactive State
+  keycloak,
+  isAuthenticated,
+  isPending,
+  hasFailed,
+  token,
+  decodedToken,
+  username,
+  userId,
+  roles,
+  resourceRoles,
+
+  // Functions
+  hasRoles,
+  hasResourceRoles,
+} = useKeycloak()
 function randomSeverity() {
   const levels = ['Laag', 'Middel', 'Hoog']
   return levels[Math.floor(Math.random() * levels.length)]
@@ -58,14 +76,7 @@ const afwijkingen = ref(
   }))
 )
 
-const keycloak = useKeycloak();
-console.error(keycloak);
-console.error(keycloak.decodedToken);
-console.error(keycloak.token);
-console.error(keycloak.userId);
-console.error(keycloak.roles);
-console.error(keycloak.resourceRoles);
+console.error('Keycloak', keycloak, 'isAuthenticated', isAuthenticated, 'isPending', isPending, 'hasFailed', hasFailed, 'token', token, 'decodedToken', decodedToken, 'username', username, 'userId', userId, 'roles', roles, 'resourceRoles', resourceRoles);
 
-const decodedToken = JSON.stringify(keycloak.decodedToken, null, 2)
 
 </script>
