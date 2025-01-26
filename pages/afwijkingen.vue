@@ -21,14 +21,10 @@
       <div class="debug-logs mt-4 p-4 bg-gray-100 rounded-lg">
         <h2 class="text-xl font-semibold mb-2">Keycloak Debug Information</h2>
         <p><strong>isAuthenticated:</strong> {{ keycloak?.isAuthenticated }}</p>
-        <p><strong>Roles:</strong> {{ keycloak?.roles?.join(', ') || "unknown"}}</p>
-        <p><strong>Resource Roles:</strong> {{ keycloak?.resourceRoles['Boei4']?.join(', ') || 'None' }}</p>
         <p><strong>User ID:</strong> {{ keycloak?.userId }}</p>
         <p><strong>Username:</strong> {{ keycloak?.username }}</p>
         <p><strong>Token:</strong> {{ keycloak?.token }}</p>
         <p><strong>Decoded Token:</strong> {{ decodedToken }}</p>
-        <p><strong>Has roles ["Data-Engineer"]:</strong> {{ keycloak?.hasRoles(['Data-Engineer']) }}</p>
-        <p><strong>Has resource roles ["Data-Engineer"] on "Boei4":</strong> {{ keycloak?.hasResourceRoles(['Data-Engineer'], 'Boei4') }}</p>
         </div>
         </div>
       </div>
@@ -39,7 +35,7 @@
 <script setup>
 import { useKeycloak } from '@josempgon/vue-keycloak'
 import { ref } from 'vue'
-
+import 
 function randomSeverity() {
   const levels = ['Laag', 'Middel', 'Hoog']
   return levels[Math.floor(Math.random() * levels.length)]
@@ -63,6 +59,12 @@ const afwijkingen = ref(
 )
 
 const keycloak = useKeycloak();
+console.error(keycloak);
+console.error(keycloak.decodedToken);
+console.error(keycloak.token);
+console.error(keycloak.userId);
+console.error(keycloak.roles);
+console.error(keycloak.resourceRoles);
 
 const decodedToken = JSON.stringify(keycloak.decodedToken, null, 2)
 
