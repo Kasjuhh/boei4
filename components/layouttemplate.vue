@@ -73,18 +73,11 @@ const navigation = [
   { name: 'Sensoren', href: '/sensors', current: false },
   { name: 'Metingen', href: '/metingen', current: false },
   { name: 'Gebruikers', href: '/gebruikers', current: false },
-  { name: 'Dashboard', href: '/dashboard', current: false },
-  { name: 'Login', href: '/login', current: false },
+  { name: 'Logout', href: 'https://aaad01.avans.nl:8000/realms/Boei4/protocol/openid-connect/logout', current: false }
 ]
-const routeTitleMap = {
-    '/dashboard': 'Dashboard',
-    '/login': 'Login',
-  };
 
-  const pageTitle = document.title;
+const pageTitle = document.title;
 
-const routeTitle = computed(() => routeTitleMap[router.path]);
-console.log(router.path);
 </script>
 
 <style>

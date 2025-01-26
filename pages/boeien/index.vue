@@ -11,7 +11,7 @@
               class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer"
               @click="navigateToBoei(1)"
             >
-              {{ boei }} 
+              {{ boei }}
             </li>
           </ul>
         </div>
