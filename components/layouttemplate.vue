@@ -71,7 +71,10 @@ const navigation = [
   { name: 'Afwijkingen', href: '/afwijkingen', current: false },
   { name: 'Notificaties', href: '/notificaties', current: false },
   { name: 'Sensoren', href: '/sensors', current: false },
-  { name: 'Metingen', href: '/metingen', current: false }
+  { name: 'Metingen', href: '/metingen', current: false },
+  { name: 'Gebruikers', href: '/gebruikers', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: false },
+  { name: 'Login', href: '/login', current: false },
 ]
 const routeTitleMap = {
     '/dashboard': 'Dashboard',

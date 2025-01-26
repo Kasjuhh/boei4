@@ -9,10 +9,9 @@
               v-for="(boei, index) in boeien"
               :key="index"
               class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer"
+              @click="navigateToBoei(1)"
             >
-              <a :href="`/boeien/${index + 1}`">
-                {{ boei }}
-              </a>
+              {{ boei }} 
             </li>
           </ul>
         </div>
@@ -22,6 +21,14 @@
 </template>
 
 <script setup>
+
+
+const locations = ['Kruger Rivier 1', 'Kruger rivier 2', 'Kruger Rivier 3', 'Kruger Rivier 4', 'Kruger Riever 5']
+
+const router = useRouter();
+function navigateToBoei(boeiId) {
+  router.push(`/boeien/${boeiId}`);
+}
 const boeien = [
   'Boei 1',
   'Boei 2',
