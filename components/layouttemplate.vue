@@ -12,8 +12,9 @@
                   </div>
                   <div class="hidden md:block z-50">
                     <div class="ml-10 flex items-baseline space-x-4">
-                      <a v-for="item in navigation" :key="item.name" :href="item.href"
-                        :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']"
+                      <a v-for="item in navigation" :key="item.name" @click="routeToPage(item.href)"
+                        class="cursor-pointer"  
+                      :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']"
                         :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
                     </div>
                   </div>
@@ -45,7 +46,7 @@
       </div>
       <header class="py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold tracking-tight text-white">{{ pageTitle}}</h1>
+          <h1 class="text-3xl font-bold tracking-tight text-white">{{ pageTitle }}</h1>
         </div>
       </header>
     </div>
@@ -66,17 +67,56 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 
 const router = useRouter();
-const navigation = [
-  { name: 'Boeien', href: '/boeien', current: false },
-  { name: 'Afwijkingen', href: '/afwijkingen', current: false },
-  { name: 'Notificaties', href: '/notificaties', current: false },
-  { name: 'Sensoren', href: '/sensors', current: false },
-  { name: 'Metingen', href: '/metingen', current: false },
-  { name: 'Gebruikers', href: '/gebruikers', current: false },
-  { name: 'Logout', href: 'https://aaad01.avans.nl:8000/realms/Boei4/protocol/openid-connect/logout', current: false }
+
+const route = useRoute();
+
+function routeToPage(href) {
+  if (/^https?:\/\//.test(href)) {
+    window.location.href = href
+  } else {
+    router.push(href)
+  }
+}
+
+const baseNavigation = [
+  { name: 'Boeien', href: '/boeien' },
+  { name: 'Afwijkingen', href: '/afwijkingen' },
+  { name: 'Notificaties', href: '/notificaties' },
+  { name: 'Sensoren', href: '/sensors' },
+  { name: 'Metingen', href: '/metingen' },
+  { name: 'Gebruikers', href: '/gebruikers' },
+  { 
+    name: 'Logout', 
+    href: `https://aaad01.avans.nl:8000/realms/Boei4/protocol/openid-connect/logout?redirect_uri=${window.location.origin}`, 
+  }
 ]
 
-const pageTitle = document.title;
+const navigation = computed(() => baseNavigation.map(item => ({
+  ...item,
+  current: item.href.startsWith('/') 
+    ? (route.path === item.href || route.path.startsWith(`${item.href}/`))
+    : false
+})))
+
+const titleMap = {
+  '/boeien': { plural: 'Boeien', singular: 'Boei' },
+  '/afwijkingen': { plural: 'Afwijkingen', singular: 'Afwijking' },
+  '/notificaties': { plural: 'Notificaties', singular: 'Notificatie' },
+  '/sensors': { plural: 'Sensoren', singular: 'Sensor' },
+  '/metingen': { plural: 'Metingen', singular: 'Meting' },
+  '/gebruikers': { plural: 'Gebruikers', singular: 'Gebruiker' },
+}
+
+const pageTitle = computed(() => {
+  const path = route.path
+  for (const basePath in titleMap) {
+    if (path.startsWith(basePath + '/')) {
+      const id = path.replace(basePath + '/', '')
+      return `${titleMap[basePath].singular} ${id}`
+    }
+  }
+  return titleMap[path]?.plural || 'Default Title'
+});
 
 </script>
 
