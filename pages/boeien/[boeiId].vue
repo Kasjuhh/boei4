@@ -25,17 +25,17 @@
               </div>
               <div class="mb-4">
                 <p class="font-bold">Temperatuur</p>
-                <p>🌡️ 15 C </p>
+                <p>🌡️ {{ boeiData.temperature }} C </p>
                 <p class="font-bold pt-7">Voltage</p>
-                <p>⚡ 1 V</p>
+                <p>⚡ {{ boeiData.voltage }} V</p>
                 <p class="font-bold pt-7">Geleiding</p>
-                <p>⚡ 1.1 ms/cm</p>
+                <p>⚡ {{ boeiData.geleiding }} ms/cm</p>
                 <p class="font-bold pt-7">Opgeloste zuurstof</p>
-                <p>🌊 1 mg/l</p>
+                <p>🌊 {{ boeiData.zuurstof }} mg/l</p>
                 <p class="font-bold pt-7">Lichtinval</p>
-                <p>☀️ 1 NTU</p>
+                <p>☀️ {{ boeiData.lichtinval }} NTU</p>
                 <p class="font-bold pt-7">Zuurtegraad</p>
-                <p>💧 7 PH</p>
+                <p>💧{{ boeiData.ph }} PH</p>
               </div>
             </div>
           </div>
@@ -49,6 +49,30 @@
 import Leaflet from '~/components/leaflet.vue';
 
 
+
+// Random helper
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function randomDate() {
+  const now = Date.now()
+  const offset = Math.floor(Math.random() * 31536000000)
+  return new Date(now - offset).toLocaleDateString()
+}
+
+const route = useRoute()
+const boeiId = computed(() => route.params.boeiId)
+
+// Generate random boei data
+const boeiData = ref({
+  voltage: (Math.random() * 1 + 3).toFixed(1),
+  ph: (Math.random() * 3 + 6).toFixed(2),
+  temperature: (Math.random() * 6 + 17).toFixed(1),
+  geleiding: (Math.random() * 9 + 1).toFixed(2),
+  zuurstof: `${randomInt(1, 10)}`,
+  lichtinval: `${randomInt(1, 10)}`,
+})
 </script>
 
 <style scoped>

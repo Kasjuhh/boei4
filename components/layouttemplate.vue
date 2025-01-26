@@ -71,6 +71,7 @@ const navigation = [
   { name: 'Afwijkingen', href: '/afwijkingen', current: false },
   { name: 'Notificaties', href: '/notificaties', current: false },
   { name: 'Sensoren', href: '/sensors', current: false },
+  { name: 'Metingen', href: '/metingen', current: false }
 ]
 const routeTitleMap = {
     '/dashboard': 'Dashboard',
