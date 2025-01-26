@@ -10,7 +10,7 @@
               :key="index"
               class="px-6 py-4 border-b hover:bg-gray-50 cursor-pointer"
             >
-              <strong class="pl-8">Naam:</strong> {{ gebruiker.naam }}
+              <strong>Naam:</strong> {{ gebruiker.naam }}
               <strong class="pl-8">Email:</strong> {{ gebruiker.email }}
               <strong class="pl-8">Rol:</strong> {{ gebruiker.rol }}
             </li>
